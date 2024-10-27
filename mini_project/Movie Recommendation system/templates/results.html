@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333;">
+    <header style="text-align: center; margin-bottom: 20px;">
+        <h1 style="font-size: 2.5em; color: #ff6347">Movie Recommendation System</h1>
+    </header>
+    <main>
+        <!-- <section class="search-section" style="text-align: center; margin-bottom: 30px;">
+            Form to submit the movie name
+            <form method="POST" action="/" style="display: inline-block;">
+                <input type="text" name="movie_name" placeholder="Search for a movie..." required
+                    style="padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px;">
+                <button type="submit"
+                    style="padding: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Search
+                </button>
+            </form>
+        </section> -->
+
+        <section class="results-section" style="text-align: center;">
+            {% if movie_list %}
+                <h3 style="font-size: 2em;">Recommended Movies:</h3>
+                <ul style=" margin: 0; padding: 0; font-size: 1.2em;">
+                    {% for movie in movie_list %}
+                        <li style="list-style-type: none; margin: 10px 0;">{{ movie }}</li> 
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if error %}
+              <h4>  <p style="color: rgb(0, 0, 0); font-weight: bold;">{{ error }}</p></h4>
+            {% endif %}
+        </section>
+
+        <!-- <section class="results-section" style="text-align: center;">
+            {% if movie_list %}
+                <h3 style="font-size: 2em;">Recommended Movies:</h3>
+                <ul style=" margin: 0; padding: 0; font-size: 1.2em;">
+                    {% for movie in movie_list %}
+                        <li style="list-style-type: none; margin: 10px 0;">{{ movie }}</li> 
+                    {% endfor %}
+                </ul>
+            {% else %}
+                {% if error %}
+                    <p style="color: red; font-weight: bold;">{{ error }}</p>
+                {% endif %}
+            {% endif %}
+        </section> -->
+        
+    </main>
+    <footer style="text-align: center; margin-top: 30px; padding: 20px; background-color: #eaeaea;">
+        <p>© 2024 Movie Recommendation System</p>
+    </footer>
+</body>
+</html>

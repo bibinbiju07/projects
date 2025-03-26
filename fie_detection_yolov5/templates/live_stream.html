@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff5252;
+            font-size: 2rem;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        img {
+            border: 5px solid #ff5252;
+            border-radius: 15px;
+            width: 640px;
+            height: 480px;
+            box-shadow: 0 0 15px rgba(255, 82, 82, 0.6);
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff5252, #d32f2f);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(255, 82, 82, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔥 Fire Detection System 🔥</h1>
+    <div class="video-container">
+        <img id="videoStream" src="{{ url_for('video_feed') }}">
+    </div>
+    <br>
+    <button onclick="stopAlarm()">Stop Alarm</button>
+    <script>
+        function stopAlarm() {
+            fetch('/stop_alarm', { method: 'POST' })
+                .then(response => response.text())
+                .then(data => console.log(data));
+        }
+    </script>
+</body>
+
+</html>
